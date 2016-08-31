@@ -11,6 +11,7 @@ socket.on('connect', function () {
 });
 
 socket.on('message', function (message) {
+   jQuery('.messages').append('<p class="sent">'+message.text+'</p>');
     console.log('new message:');
     console.log(message.text);
 });

@@ -19,7 +19,7 @@ io.on('connection', function (socket) {
     socket.on('message', function(message){
         "use strict";
         console.log('Message received: '+ message.text);
-        socket.broadcast.emit('message', message);
+        io.emit('message', message);
     });
 
     socket.emit('message', {
