@@ -1,8 +1,8 @@
 /**
  * Created by Jerome on 8/30/16.
  */
-var name = getQueryVariable('name'),
-    room = getQueryVariable('room'),
+var name = getQueryVariable('name') ||"Someone",
+    room = getQueryVariable('room')|| "Main Room",
     socket = io();
 
 console.log(name + ' wants to join ' + room + '.....');
