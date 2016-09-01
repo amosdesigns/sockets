@@ -14,27 +14,20 @@
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="js/vendors/modernizr.min.js"></script>
 </head>
-<body>
+<body class="home">
 
 <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-<div class="messages">
-    <!-- mesasages goes here  -->
-</div>
 
-<form id="message-form">
-    <input type="text" name="message">
-    <input type="submit" value="SEND !">
+
+<form id="message-form" action="/chat.html">
+    <h2>Display Name:</h2>
+    <input type="text" name="name">
+
+    <input type="submit" value="enter room !">
 
 </form>
 
-
-
-<script type="text/javascript" src="js/vendors/jquery.min.js"></script>
-<script type="text/javascript" src="js/vendors/socket.io.min.js"></script>
-<script type="text/javascript" src="js/vendors/moment-w-locales.js"></script>
-<script type="text/javascript" src="js/vendors/queryparms.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
