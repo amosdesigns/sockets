@@ -2,6 +2,7 @@
  * Created by Jerome on 8/30/16.
  */
 var PORT = process.env.PORT || 3000,
+    moment = require('moment'),
     express = require('express'),
     app = express(),
     http = require('http')
@@ -9,6 +10,7 @@ var PORT = process.env.PORT || 3000,
     io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
+
 io.on('connection', function (socket) {
     console.log('***********************************************************');
     console.log('***********************************************************');
@@ -18,7 +20,9 @@ io.on('connection', function (socket) {
 
     socket.on('message', function(message){
         "use strict";
+
         console.log('Message received: '+ message.text);
+        message.timestamp = moment().valueOf();
         io.emit('message', message);
     });
 

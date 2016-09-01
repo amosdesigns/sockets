@@ -1,7 +1,12 @@
 /**
  * Created by Jerome on 8/30/16.
  */
-var socket = io();
+var name = getQueryVariable('name'),
+    room = getQueryVariable('room'),
+    socket = io();
+
+console.log(name + ' wants to join ' + room + '.....');
+
 socket.on('connect', function () {
     console.log('***********************************************************');
     console.log('***********************************************************');
@@ -11,9 +16,11 @@ socket.on('connect', function () {
 });
 
 socket.on('message', function (message) {
-   jQuery('.messages').append('<p class="sent">'+message.text+'</p>');
-    console.log('new message:');
-    console.log(message.text);
+    var momentTimestamp = moment.utc(message.timestamp),
+        $message = jQuery('.messages');
+    $message.append('<p><strong>' + message.name + ' - ' + momentTimestamp.local()
+                                                                          .format('h:mm a') + ' => </strong>');
+    $message.append(message.text + '</p>');
 });
 
 // handle
@@ -22,6 +29,7 @@ var $form = jQuery('#message-form'),
 $form.on('submit', function (event) {
     event.preventDefault();
     socket.emit('message', {
+        name: name,
         text: $message.val()
     });
     //clear input after sumbit
